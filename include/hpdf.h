@@ -1508,33 +1508,61 @@ HPDF_Shading_AddVertexRGB(HPDF_Shading shading,
                           HPDF_REAL x, HPDF_REAL y,
                           HPDF_UINT8 r, HPDF_UINT8 g, HPDF_UINT8 b);
 
+// shading type 2, function type 2(only option), color space RGB(only option),
+// shading from pointA to pointB, start with RGB C0 and end with RGB C1
+
+// element, Domain [0 1], Extend [false false], are set as deafult
+
+// x = x coords, y = y coords
+// N = varible in function type 2 (interpolation_exponent)
+
+//  0 <= C0 & C1 <= 1
+//  0 < N
 HPDF_EXPORT(HPDF_Shading)
 HPDF_Shading_Type2 (HPDF_Doc         pdf,
-                    HPDF_REAL x_1, HPDF_REAL y_1,
-                    HPDF_REAL x_2, HPDF_REAL y_2,
-                    HPDF_REAL start_r, HPDF_REAL start_g, HPDF_REAL start_b,
-                    HPDF_REAL end_r, HPDF_REAL end_g, HPDF_REAL end_b,
-                    HPDF_REAL interpolation_exponent);
+                    HPDF_REAL PointA_x, HPDF_REAL PointA_y,
+                    HPDF_REAL PointB_x, HPDF_REAL PointB_y,
+                    HPDF_REAL C0_R, HPDF_REAL C0_G, HPDF_REAL C0_B,
+                    HPDF_REAL C1_R, HPDF_REAL C1_G, HPDF_REAL C1_B,
+                    HPDF_REAL N);
 
+// shading type 3, function type 2(only option), color space RGB(only option),
+// shading from circleA to circleB, start with RGB C0 and end with RGB C1
+
+// element, Domain [0 1], Extend [false false], are set as deafult
+
+// x = x coords, y = y coords, r = radius
+// N = varible in function type 2 (interpolation_exponent)
+
+//  0 <= C0 & C1 <= 1
+//  0 < N
 HPDF_EXPORT(HPDF_Shading)
 HPDF_Shading_Type3 (HPDF_Doc         pdf,
                     HPDF_REAL PointA_x, HPDF_REAL PointA_y, HPDF_REAL PointA_r,
                     HPDF_REAL PointB_x, HPDF_REAL PointB_y, HPDF_REAL PointB_r,
                     HPDF_REAL C0_R, HPDF_REAL C0_G, HPDF_REAL C0_B,
                     HPDF_REAL C1_R, HPDF_REAL C1_G, HPDF_REAL C1_B,
-                    HPDF_REAL interpolation_exponent);
+                    HPDF_REAL N);
 
+// modified from #157 pull request
+// shading type 4, color space RGB(only option),
 HPDF_EXPORT(HPDF_Shading)
 HPDF_Shading_Type4 (HPDF_Doc         pdf,
                    HPDF_REAL xMin, HPDF_REAL xMax,
                    HPDF_REAL yMin, HPDF_REAL yMax);
 
+// add vertex to shading pattern 4
+// edge flag,
+// f0 = require 3 vertex, A, B, C
+// f1 = shading from BC to new vertex
+// f2 = shading from CA (or AC) to new vertex
+// check PDF DOC for more detail
 HPDF_EXPORT(HPDF_STATUS)
-HPDF_Shading_Type4_AddVertexRGB (
+HPDF_Shading_Type4_AddVertexRGB(
                           HPDF_Shading shading,
                           HPDF_Shading_Type4_Flag edgeFlag,
-                          HPDF_REAL R, HPDF_REAL G, HPDF_REAL B,
-                          HPDF_REAL x, HPDF_REAL y);
+                          HPDF_REAL x, HPDF_REAL y,
+                          HPDF_REAL R, HPDF_REAL G, HPDF_REAL B);
 
 /*--- In-line images -----------------------------------------------------*/
 

@@ -419,6 +419,7 @@ HPDF_Shading_Type3 (HPDF_Doc         pdf,
 }
 
 //----------------------------------------------------------------------------
+// modified from #157 pull request
 // shading type 4, color space RGB(only option),
 HPDF_EXPORT(HPDF_Shading)
 HPDF_Shading_Type4 (HPDF_Doc         pdf,
@@ -487,6 +488,7 @@ HPDF_Shading_Type4 (HPDF_Doc         pdf,
 // f0 = require 3 vertex, A, B, C
 // f1 = shading from BC to new vertex
 // f2 = shading from CA (or AC) to new vertex
+// check PDF DOC for more detail
 HPDF_EXPORT(HPDF_STATUS)
 HPDF_Shading_Type4_AddVertexRGB(
                           HPDF_Shading shading,
